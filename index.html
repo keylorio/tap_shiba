@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acumula Shiba Inu</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #shiba {
+            width: 200px;
+            height: 200px;
+            background-image: url('https://s2.coinmarketcap.com/static/img/coins/200x200/5994.png'); /* Cambia esta URL a una imagen de Shiba Inu */
+            background-size: cover;
+            cursor: pointer;
+        }
+        #contador {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="shiba"></div>
+    <div id="contador">Shiba Inu acumulados: 0</div>
+
+    <script>
+        let shibaCount = localStorage.getItem('shibaCount') ? parseInt(localStorage.getItem('shibaCount')) : 0;
+
+        const contadorElement = document.getElementById('contador');
+        const shibaElement = document.getElementById('shiba');
+
+        function actualizarContador() {
+            contadorElement.innerText = `Shiba Inu acumulados: ${shibaCount}`;
+        }
+
+        shibaElement.addEventListener('click', () => {
+            shibaCount++;
+            localStorage.setItem('shibaCount', shibaCount);
+            actualizarContador();
+        });
+
+        // Actualizar contador al cargar la página
+        actualizarContador();
+    </script>
+
+</body>
+</html>
